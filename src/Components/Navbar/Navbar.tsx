@@ -2,23 +2,22 @@ import "./Navbar.css";
 import avatar from "../../assets/avatar3.png";
 import netflixLogo from "../../assets/netflix-logo.png";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
   };
   return (
-    <div className="container mx-auto pt-6 flex justify-between text-white">
+    <div className="container mx-auto pt-6 flex justify-between text-white ">
       <div className="overflow-hidden flex gap-20 items-center">
-        <img src={netflixLogo} alt="netflix" className="w-40" />
-        <ul className="flex gap-5">
-          <li>Home</li>
-          <li>TV Shows</li>
-          <li>Movies</li>
-          <li>New & Popular</li>
-          <li>My List</li>
-          <li>Browse by Languages</li>
+        <img src={netflixLogo} alt="netflix" className="w-40 cursor-pointer" />
+        <ul className="flex gap-5 ">
+          <li className="hover:text-white/50 cursor-pointer">Home</li>
+          <li className="hover:text-white/50 cursor-pointer">TV Shows</li>
+          <li className="hover:text-white/50 cursor-pointer">Movies</li>
+          <li className="hover:text-white/50 cursor-pointer">New & Popular</li>
+          <li className="hover:text-white/50 cursor-pointer">My List</li>
+          <li className="hover:text-white/50 cursor-pointer">Browse by Languages</li>
         </ul>
       </div>
       <div className="flex gap-6 text-2xl items-center">
@@ -30,7 +29,7 @@ const Navbar = () => {
             <i className="fa-solid fa-caret-down"></i>
           </div>
           {isOpen && (
-            <div className="absolute z-10 mt-2 bg-black divide-y rounded-lg shadow w-44 border-white">
+            <div className="absolute z-10 mt-2 bg-black/75 divide-y rounded-lg shadow w-44 border-white right-0">
               <ul className="py-2 text-sm ">
                 <li className="block px-4 py-2 hover:underline"><i className="fa-solid fa-pen me-2"></i> Manage profile</li>
                 <li className="block px-4 py-2 hover:underline"><i className="fa-solid fa-arrow-up-right-from-square me-2"></i>Exit Profile</li>
