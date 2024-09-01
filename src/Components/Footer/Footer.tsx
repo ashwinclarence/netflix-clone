@@ -1,7 +1,7 @@
 import "./Footer.css";
 const Footer = () => {
   return (
-    <div className="container mx-auto text-white p-4">
+    <div className="container mx-auto text-gray-400 p-4">
       <div className="footer-top-row flex gap-10 text-4xl">
         <i className="fa-brands fa-facebook-f"></i>
         <i className="fa-brands fa-instagram"></i>
@@ -22,7 +22,7 @@ const Footer = () => {
         <li>Corporate Information</li>
         <li>Contact Us</li>
       </ul>
-      <input type="text" className="bg-transparent border h-10 placeholder:text-white font-semibold text-center mt-10" placeholder="Service Code"/>
+      <input type="text" className="bg-transparent border h-10 font-semibold text-center mt-10" placeholder="Service Code"/>
      <h6 className="mt-5"> &#169; 1997-2024 Netflix, Inc.</h6>
     </div>
   );

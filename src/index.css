@@ -11,6 +11,7 @@
 
 body{
   background-color: var(--body-color);
+  color: #FFFFFF;
 }
 
 :root {
