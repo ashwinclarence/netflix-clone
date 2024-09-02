@@ -23,12 +23,13 @@ const MovieRow = ({ title, movieURL }: MovieRow) => {
       });
   }, []);
 
+
   return (
     <div className="my-8 px-8 ">
       <h2 className="text-white text-2xl font-semibold mb-4">{title}</h2>
       <div className="flex overflow-x-auto scrollbar-none ">
         {moviesList.map((movie) => (
-          <MovieCard key={movie.id} image={movie.backdrop_path || movie.poster_path} title={movie.title || movie.name} />
+          <MovieCard key={movie.id} image={movie.backdrop_path || movie.poster_path} title={movie.title || movie.name} id={movie.id} />
         ))}
       </div>
     </div>

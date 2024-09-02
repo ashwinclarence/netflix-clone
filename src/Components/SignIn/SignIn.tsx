@@ -1,7 +1,7 @@
-import './login.css';
+import './SignIn.css';
 import netflixLogo from '../../assets/netflix-logo.png'
 import { Link } from 'react-router-dom';
-const Login = () => {
+const SignIn = () => {
 
   return (
     <div className='login-container'> 
@@ -11,7 +11,7 @@ const Login = () => {
         <img src={netflixLogo} alt="Netflix Logo" className="w-40" />
       </nav>
       <div className="bg-black bg-opacity-75 p-10 rounded-md w-full max-w-md z-10">
-        <h2 className="text-white text-3xl mb-8">LogIn</h2>
+        <h2 className="text-white text-3xl mb-8">Sign In</h2>
         <form action="#" className="space-y-6">
           <div className="relative">
             <input
@@ -50,9 +50,9 @@ const Login = () => {
           </div>
         </form>
         <p className="text-gray-500 mt-8">
-          New to Netflix?{" "}
-          <Link to='/sign-in' className="text-white hover:underline">
-            Sign up now
+          Already have an account?{" "}
+          <Link to='/login' className="text-white hover:underline">
+            Login
           </Link>
         </p>
        
@@ -62,4 +62,4 @@ const Login = () => {
   );
 }
 
-export default Login
+export default SignIn

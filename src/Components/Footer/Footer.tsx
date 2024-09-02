@@ -1,7 +1,7 @@
 import "./Footer.css";
 const Footer = () => {
   return (
-    <div className="container mx-auto text-gray-400 p-4">
+    <div className="container mx-auto text-gray-400 px-4 py-10">
       <div className="footer-top-row flex gap-10 text-4xl">
         <i className="fa-brands fa-facebook-f"></i>
         <i className="fa-brands fa-instagram"></i>

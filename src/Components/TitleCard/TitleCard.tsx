@@ -14,12 +14,11 @@ const TitleCard = ({ URL }: TitleCard) => {
   useEffect(() => {
     const fetchTrendingMovies = async () => {
       try {
-        const response = await axios.get(
-          `/trending/all/week?api_key=${API_KEY}&language=en-US`
-        );
+        const response = await axios.get(URL);
         const results: Movie[] = response.data.results;
         if (results.length > 0) {
           const randomIndex = Math.floor(Math.random() * results.length);
+          console.log(response.data.results[0])
           setTrendingMovie(results[randomIndex]);
         }
       } catch (error) {
@@ -30,9 +29,9 @@ const TitleCard = ({ URL }: TitleCard) => {
   }, []);
   return (
     <div className="titleCard-container text-white h-[100vh] overflow-hidden">
-      <img src={IMAGE_URL+trendingMovie?.backdrop_path} alt="" className="w-full h-full relative" />
+      <img src={IMAGE_URL+trendingMovie?.backdrop_path} alt="" className="w-full h-full relative " />
       <div className="absolute bottom-52 left-40 ">
-        <h1 className="text-8xl tracking-tighter">{trendingMovie?.title || trendingMovie?.name}</h1>
+        <h1 className="text-8xl tracking-tighter truncate max-w-5xl">{trendingMovie?.title || trendingMovie?.name}</h1>
         <p className="max-w-xl text-justify mt-8">{trendingMovie?.overview}</p>
         <button className="w-40 h-10 rounded-md bg-white text-black text-xl font-bold mt-4">
           <i className="fa-solid fa-play"></i> &nbsp;Play
