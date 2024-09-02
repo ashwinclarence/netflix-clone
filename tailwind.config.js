@@ -8,10 +8,15 @@ export default {
     extend: {
       colors: {
         'netflix-red': '#E50914',
-        'netflix-gray':"#303030"
-      }
+        'netflix-gray':"#1d1d1d"
+      },
+      scrollbar: ['rounded'],
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')({ 
+      nocompatible: true 
+    }), 
+  ],
   darkMode:"media"
 }

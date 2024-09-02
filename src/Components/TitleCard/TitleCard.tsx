@@ -2,9 +2,8 @@ import "./TitleCard.css";
 import movieBanner from "../../assets/b1.jpg";
 const TitleCard = () => {
   return (
-    <div className="titleCard-container text-white">
-      <div className="">
-        <img src={movieBanner} alt="" className="w-full relative" />
+    <div className="titleCard-container text-white h-[100vh] overflow-hidden">
+        <img src={movieBanner} alt="" className="w-full h-full relative" />
         <div className="absolute bottom-52 left-40 ">
           <h1 className="text-8xl tracking-tighter">MOVIE TITLE</h1>
           <p className="max-w-xl text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam officia eaque corporis possimus iure? Alias, possimus accusantium. Perferendis dolorum temporibus expedita facilis reiciendis architecto, ipsum doloremque, laudantium ipsam dolores nam!</p>
@@ -15,7 +14,6 @@ const TitleCard = () => {
           <i className="fa-solid fa-circle-info"></i>  More Info
           </button>
         </div>
-      </div>
     </div>
   );
 };
