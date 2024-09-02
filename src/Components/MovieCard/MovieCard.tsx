@@ -1,3 +1,4 @@
+import { IMAGE_URL } from '../../Constants/constant';
 import './MovieCard.css'
 
 type MovieCard = {
@@ -10,7 +11,7 @@ const MovieCard = ({image,title}:MovieCard) => {
   return (
     <div className="relative min-w-72 h-44 m-2 cursor-pointer hover:scale-105 transform transition-transform duration-300 ease-out">
       <img
-        src={image}
+        src={IMAGE_URL+image}
         alt={title}
         className="w-full h-full object-cover rounded-lg"
       />

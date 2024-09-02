@@ -1,5 +1,5 @@
 import MovieCard from "../MovieCard/MovieCard";
-import { Movie, movieData } from "../../Types/Type";
+import { Movie } from "../../Types/Type";
 import { useEffect, useState } from "react";
 import axios from "../../axios";
 
@@ -9,7 +9,7 @@ type MovieRow = {
 };
 
 const MovieRow = ({ title, movieURL }: MovieRow) => {
-  const [moviesList, setMoviesList] = useState<Movie[]>();
+  const [moviesList, setMoviesList] = useState<Movie[]>([]);
 
   // useEffect for movies
   useEffect(() => {
@@ -27,9 +27,9 @@ const MovieRow = ({ title, movieURL }: MovieRow) => {
     <div className="my-8 px-8 ">
       <h2 className="text-white text-2xl font-semibold mb-4">{title}</h2>
       <div className="flex overflow-x-auto scrollbar-none ">
-        {/* {moviesList.map((movie, index) => (
-          <MovieCard key={movie.id} image={movie.backdrop_path} title={movie.title || movie.name} />
-        ))} */}
+        {moviesList.map((movie) => (
+          <MovieCard key={movie.id} image={movie.backdrop_path || movie.poster_path} title={movie.title || movie.name} />
+        ))}
       </div>
     </div>
   );
