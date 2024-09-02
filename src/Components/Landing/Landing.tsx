@@ -1,7 +1,7 @@
 import "./Landing.css";
-import netflixLogo from "../../assets/netflix-logo.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import SecondaryNavbar from "../SecondaryNavbar/SecondaryNavbar";
 
 const Landing = () => {
   const [email, setEmail] = useState<string>("");
@@ -31,10 +31,7 @@ const Landing = () => {
   }
   return (
     <div className="landing-container ">
-      <div className="bg-black/80 p-4 flex justify-between items-end">
-        <img src={netflixLogo} alt="" className="w-40 cursor-pointer" />
-        <button className="bg-netflix-red text-white rounded-md px-5 py-2">Sign In</button>
-      </div>
+        <SecondaryNavbar/>
       <div className="bg-black/80 w-full flex flex-col items-center justify-center gap4 min-h-screen text-white gap-4">
         <h1 className="text-4xl">Unlimited movies, TV</h1>
         <h1>shows and more</h1>
