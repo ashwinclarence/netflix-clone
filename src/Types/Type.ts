@@ -16,3 +16,9 @@ export type movieData = {
 }
   
 
+export type MovieList = {
+  id: number;
+  image: string;
+  title: string;
+};
+

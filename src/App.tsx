@@ -6,11 +6,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import PageNotFound from "./Pages/PageNotFound";
 import LikedMovies from "./Pages/LikedMovies";
-
+import { LikedContextProvider } from "./Context/LikedContext";
+import { UserContextProvider } from "./Context/UserContext";
 const App = () => {
-  
   return (
     <>
+      <UserContextProvider>
+      <LikedContextProvider>
       <ToastContainer />
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -19,6 +21,8 @@ const App = () => {
         <Route path="/liked-movies" element={<LikedMovies />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      </LikedContextProvider>
+      </UserContextProvider>
     </>
   );
 };

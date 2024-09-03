@@ -3,14 +3,13 @@ import { IMAGE_URL } from "../../Constants/constant";
 import "./MovieCard.css";
 import { favMovieRef } from "../../Firebase/FireBaseConfig";
 import { toast } from "react-toastify";
+import { MovieList } from "../../Types/Type";
 
-type MovieCard = {
-  id: number;
-  image: string;
-  title: string;
-};
+
 
 const handleLikeMovie = (id: number, image: string, title: string) => {
+
+
   const docRef = doc(favMovieRef, id.toString());
   getDoc(docRef)
     .then((snapshot) => {
@@ -33,7 +32,7 @@ const handleLikeMovie = (id: number, image: string, title: string) => {
     });
 };
 
-const MovieCard = ({ image, title, id }: MovieCard) => {
+const MovieCard = ({ image, title, id }: MovieList) => {
   return (
     <div className="relative min-w-72 h-44 mx-2 cursor-pointer hover:z-10 hover:scale-110 transform transition-transform duration-300 ease-out">
       {/* Movie Image */}

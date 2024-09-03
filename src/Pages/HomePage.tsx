@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Footer from "../Components/Footer/Footer";
 import MovieRow from "../Components/MovieRow/MovieRow";
 import Navbar from "../Components/Navbar/Navbar";
@@ -12,19 +12,17 @@ import {
   ROMANCE_MOVIE_URL,
   TRENDING_URL,
 } from "../Constants/constant";
-import { useNavigate } from "react-router-dom";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../Firebase/FireBaseConfig";
+import userAuth from "../Context/UserContext";
+import { useEffect } from "react";
 
 const HomePage = () => {
+  const { user } = userAuth();
   const navigate = useNavigate();
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        navigate("/");
-      }
-    });
-  }, []);
+    if (!user) {
+      navigate("/");
+    }
+  }, [user]);
 
   return (
     <div>

@@ -1,29 +1,9 @@
-import { getDocs } from "firebase/firestore";
 import "./MovieList.css";
-import { favMovieRef } from "../../Firebase/FireBaseConfig";
-import { useEffect, useState } from "react";
 import MovieCard from "../MovieCard/MovieCard";
+import useLikedMovies from "../../Context/LikedContext";
 
-type MovieList = {
-  id: number;
-  image: string;
-  title: string;
-};
-
-const MovieList = () => {
-  const [movies, setMovies] = useState<MovieList[]>([]);
-  useEffect(() => {
-    getDocs(favMovieRef).then((response) => {
-      const moviesArray = response.docs.map((doc) => {
-        return {
-          id: doc.data().id,
-          image: doc.data().image,
-          title: doc.data().title,
-        };
-      });
-      setMovies(moviesArray);
-    });
-  }, [movies]);
+const MoviesList = () => {
+  const { movies } = useLikedMovies();
 
   return (
     <div className="flex flex-col gap-4 min-h-[100vh] pt-40 py-8 px-8">
@@ -34,8 +14,7 @@ const MovieList = () => {
             key={movie.id}
             id={movie.id}
             image={movie.image}
-                title={movie.title}
-            
+            title={movie.title}
           />
         ))}
       </div>
@@ -43,4 +22,4 @@ const MovieList = () => {
   );
 };
 
-export default MovieList;
+export default MoviesList;
