@@ -3,7 +3,6 @@ import { IMAGE_URL } from "../../Constants/constant";
 import "./MovieCard.css";
 import { favMovieRef } from "../../Firebase/FireBaseConfig";
 import { toast } from "react-toastify";
-import { useState } from "react";
 
 type MovieCard = {
   id: number;
