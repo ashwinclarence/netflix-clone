@@ -2,10 +2,15 @@ import "./Navbar.css";
 import avatar from "../../assets/avatar3.png";
 import netflixLogo from "../../assets/netflix-logo.png";
 import { useState, useEffect } from "react";
+import { signOut } from "firebase/auth";
+import { auth } from "../../Firebase/FireBaseConfig";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
@@ -25,6 +30,16 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+
+  // logout function
+  const handleLogout = () => {
+    signOut(auth).then(() => {
+      navigate('/');
+    }).catch((error) =>{
+      toast.error(error)
+    })
+  }
 
   return (
     <div
@@ -76,7 +91,7 @@ const Navbar = () => {
                   <i className="fa-regular fa-circle-question me-2"></i>Help
                   Center
                 </li>
-                <li className="block px-4 py-2 hover:underline mt-2 text-center">
+                <li className="block px-4 py-2 hover:underline mt-2 text-center" onClick={handleLogout}>
                   Sign out of Netflix
                 </li>
               </ul>

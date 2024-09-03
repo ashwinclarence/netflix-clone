@@ -36,3 +36,4 @@ export type movieData = {
     title:string
 }
   
+

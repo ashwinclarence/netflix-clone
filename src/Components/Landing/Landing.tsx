@@ -15,6 +15,7 @@ const Landing = () => {
     // if the email is valid then move to howe page
     if (validateEmail(email)) {
       setError("");
+      console.log("moving")
       navigate("/home");
     } else {
       setError("Invalid Email Address");
@@ -47,7 +48,7 @@ const Landing = () => {
             <input
               type="text"
               id="login-email"
-              className="border border-double  border-white bg-black/20 text-white p-4 outline-none rounded h-12 w-80"
+              className="border bg-black/20 text-white p-4 outline-none rounded h-12 w-80 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-600"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email Address"
