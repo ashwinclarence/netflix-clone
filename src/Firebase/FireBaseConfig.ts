@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { collection, getFirestore } from "firebase/firestore";
 
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -16,3 +17,6 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig)
 export const auth = getAuth(app);
+export const db = getFirestore();
+
+export const favMovieRef=collection(db,'FavoriteMovies')

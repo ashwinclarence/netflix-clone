@@ -4,7 +4,7 @@ import netflixLogo from "../../assets/netflix-logo.png";
 import { useState, useEffect } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Firebase/FireBaseConfig";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
@@ -37,13 +37,13 @@ const Navbar = () => {
     signOut(auth).then(() => {
       navigate('/');
     }).catch((error) =>{
-      toast.error(error)
+      toast.error(error.message)
     })
   }
 
   return (
     <div
-      className={`px-20 mx-auto pt-6 flex justify-between text-white fixed w-full z-10 transition-colors duration-300 ${
+      className={`px-20 mx-auto pt-6 flex justify-between text-white fixed w-full z-50 transition-colors duration-300 ${
         isScrolled
           ? "bg-black/70"
           : "bg-gradient-to-b from-black to-transparent"
@@ -54,9 +54,9 @@ const Navbar = () => {
         <ul className="flex gap-5 ">
           <li className="hover:text-white/50 cursor-pointer">Home</li>
           <li className="hover:text-white/50 cursor-pointer">TV Shows</li>
-          <li className="hover:text-white/50 cursor-pointer">Movies</li>
+          <Link to='/home' className="hover:text-white/50 cursor-pointer">Movies</Link>
           <li className="hover:text-white/50 cursor-pointer">New & Popular</li>
-          <li className="hover:text-white/50 cursor-pointer">My List</li>
+          <Link to='/liked-movies' className="hover:text-white/50 cursor-pointer">My List</Link>
           <li className="hover:text-white/50 cursor-pointer">
             Browse by Languages
           </li>

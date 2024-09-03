@@ -30,10 +30,10 @@ const SignIn = () => {
               navigate("/home");
             })
             .catch((error) => {
-              toast.error(error);
+              toast.error(error.message);
               console.log("Error on sign-up using firebase", error);
             });
-          toast.error(error);
+          toast.error(error.message);
           console.log("Error on login using firebase", error);
         });
     } else if (password.trim().length !== 6) {

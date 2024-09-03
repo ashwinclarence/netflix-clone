@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./FireBaseConfig";
 
 
@@ -18,4 +18,14 @@ export const loginExistingUser = async (username: string, password: string): Pro
     }
 
     return false;
+}
+
+
+// check the user session 
+export const checkUserSession = () => {
+    onAuthStateChanged(auth, (user) => {
+        if (user) return true;
+        
+        return false;
+    })
 }
