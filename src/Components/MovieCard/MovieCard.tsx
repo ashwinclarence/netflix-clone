@@ -8,8 +8,6 @@ import { MovieList } from "../../Types/Type";
 
 
 const handleLikeMovie = (id: number, image: string, title: string) => {
-
-
   const docRef = doc(favMovieRef, id.toString());
   getDoc(docRef)
     .then((snapshot) => {

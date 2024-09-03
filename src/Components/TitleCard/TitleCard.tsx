@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { API_KEY, IMAGE_URL } from "../../Constants/constant";
+import {  IMAGE_URL } from "../../Constants/constant";
 import "./TitleCard.css";
 import axios from "../../axios";
 import { Movie } from "../../Types/Type";
