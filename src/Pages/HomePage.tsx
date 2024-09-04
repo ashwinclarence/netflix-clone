@@ -14,6 +14,7 @@ import {
 } from "../Constants/constant";
 import userAuth from "../Context/UserContext";
 import { useEffect } from "react";
+import { CircularProgress } from "@mui/material";
 
 const HomePage = () => {
   const { user,loading } = userAuth();
@@ -26,7 +27,7 @@ const HomePage = () => {
   }, [user, loading, navigate]);
   
   if (loading) {
-    return <h2 className="flex items-center justify-center">Loading</h2>;
+    return <h2 className="flex items-center justify-center h-screen text-white"><CircularProgress  /></h2>;
   } 
     
     
