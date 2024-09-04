@@ -16,16 +16,22 @@ import userAuth from "../Context/UserContext";
 import { useEffect } from "react";
 
 const HomePage = () => {
-  const { user } = userAuth();
+  const { user,loading } = userAuth();
   const navigate = useNavigate();
   useEffect(() => {
-    if (!user) {
+    console.log(user)
+    if (!user && !loading) {
       navigate("/");
     }
-  }, [user]);
-
-  return (
-    <div>
+  }, [user, loading, navigate]);
+  
+  if (loading) {
+    return <h2 className="flex items-center justify-center">Loading</h2>;
+  } 
+    
+    
+    return (
+      <div>
       <Navbar />
       <TitleCard URL={TRENDING_URL} />
       <MovieRow title="DOCUMENTARIES" movieURL={DOCUMENTARIES_URL} />
@@ -37,6 +43,7 @@ const HomePage = () => {
       <Footer />
     </div>
   );
+
 };
 
 export default HomePage;

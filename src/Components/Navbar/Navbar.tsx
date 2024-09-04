@@ -50,7 +50,7 @@ const Navbar = () => {
       }`}
     >
       <div className="overflow-hidden flex gap-20 items-center">
-        <img src={netflixLogo} alt="netflix" className="w-40 cursor-pointer" />
+      <Link to='/home'>  <img src={netflixLogo} alt="netflix" className="w-40 cursor-pointer" /></Link>
         <ul className="flex gap-5 ">
           <li className="hover:text-white/50 cursor-pointer">Home</li>
           <li className="hover:text-white/50 cursor-pointer">TV Shows</li>

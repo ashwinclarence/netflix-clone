@@ -1,11 +1,11 @@
 import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
-import { IMAGE_URL } from "../../Constants/constant";
+import { API_KEY, IMAGE_URL } from "../../Constants/constant";
 import "./MovieCard.css";
 import { favMovieRef } from "../../Firebase/FireBaseConfig";
 import { toast } from "react-toastify";
 import { MovieList } from "../../Types/Type";
-
-
+import axios from "../../axios";
+import { useNavigate } from "react-router-dom";
 
 const handleLikeMovie = (id: number, image: string, title: string) => {
   const docRef = doc(favMovieRef, id.toString());
@@ -31,6 +31,18 @@ const handleLikeMovie = (id: number, image: string, title: string) => {
 };
 
 const MovieCard = ({ image, title, id }: MovieList) => {
+  const navigate = useNavigate();
+  const handlePlayMovie = (id: number) => {
+    axios
+      .get(`movie/${id}/videos?api_key=${API_KEY}&&language=en-US`)
+      .then((response) => {
+        if (response.data.results.length !== 0) {
+          navigate(`/movie/${response.data.results[0].key}`);
+        } else {
+          toast.error("Movie Trailer not available");
+        }
+      });
+  };
   return (
     <div className="relative min-w-72 h-44 mx-2 cursor-pointer hover:z-10 hover:scale-110 transform transition-transform duration-300 ease-out">
       {/* Movie Image */}
@@ -46,13 +58,23 @@ const MovieCard = ({ image, title, id }: MovieList) => {
           {title}
         </h3>
         {/* button for like */}
-        <button
-          className="bg-white text-black px-4 py-2 rounded-md text-sm font-bold"
-          type="button"
-          onClick={() => handleLikeMovie(id, image, title)}
-        >
-          <i className="fa-regular fa-heart"></i>
-        </button>
+        <div>
+          {" "}
+          <button
+            className="bg-white text-black px-4 py-2 rounded-md text-sm font-bold"
+            type="button"
+            onClick={() => handleLikeMovie(id, image, title)}
+          >
+            <i className="fa-regular fa-heart"></i>
+          </button>
+          <button
+            className="bg-white text-black px-4 py-2 rounded-md text-sm font-bold ms-3"
+            type="button"
+            onClick={() => handlePlayMovie(id)}
+          >
+            <i className="fa-solid fa-play"></i>
+          </button>
+        </div>
       </div>
     </div>
   );

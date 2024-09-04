@@ -8,6 +8,7 @@ import PageNotFound from "./Pages/PageNotFound";
 import LikedMovies from "./Pages/LikedMovies";
 import { LikedContextProvider } from "./Context/LikedContext";
 import { UserContextProvider } from "./Context/UserContext";
+import MoviePlayerPage from "./Pages/MoviePlayerPage";
 const App = () => {
   return (
     <>
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/home" element={<HomePage />} />
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/liked-movies" element={<LikedMovies />} />
+        <Route path="/movie/:id" element={<MoviePlayerPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       </LikedContextProvider>

@@ -4,16 +4,19 @@ import { auth } from "../Firebase/FireBaseConfig";
 
 type UserContextType = {
   user: boolean;
+  loading: boolean;
 }
 
 const UserContext = createContext<UserContextType|undefined>(undefined);
 
 export function UserContextProvider({children}: { children: React.ReactNode;}) {
   const [user, setUser] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser ? true: false);
+      setUser(currentUser ? true : false);
+      setLoading(false);
     });
 
     return () => {
@@ -22,7 +25,7 @@ export function UserContextProvider({children}: { children: React.ReactNode;}) {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ user,loading }}>{children}</UserContext.Provider>
   );
 }
 
